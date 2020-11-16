@@ -1,0 +1,68 @@
+extends homepage
+block content
+    div.container-card
+        ul.parent-Card
+            //- For creating company
+            //- li.card-items
+            - const items = List_items
+            each list, index in items
+                 li.card-items
+                    div.card-company-reg
+                        .header-card-comapny
+                            .card-title-control
+                                .card-title
+                                    a(href=`/cash_advance/${list.unique_id}`)= list.listnames
+                                .card-edit
+                                    button.btn-icon-items_#btn-icon-edit(data-target=`${list.id}`)
+                                        span.icon-edit-card_
+                            .card-ca-no Total C.A: #{list.totalca===null?'0':list.totalca} items
+                        .footer-card-compnay
+                            label Date Created: #{list.datecreated} 
+                            label Last Update: #{list.lastupdate}
+                        div
+                            //- a(href=`/cash_advance/${list.id}`) open 
+                            //- button.btn.btnPrimary#tryopen(data-target="btn-key") Open
+            else
+                 li.card-items
+                    div.card-company-reg
+                        .header-card-comapny
+                            .card-ca-no NO RECORD ( Please Add new company )
+
+            //- li.card-items(style="display: none")
+                div.card-company-reg
+                    .header-card-comapny
+                        .card-title-control
+                          .card-title GTC aldis
+                          .card-edit
+                            button.btn-icon-items_
+                                span.icon-edit-card_
+                        .card-ca-no Total C.A: 1,000 items
+                    .footer-card-compnay
+                        label Date Created: July 02, 2020 
+                        label Last Update: July 02, 2020
+                    .button-card
+                        button.btn.btnPrimary#tryopen(data-target="btn-key") Open
+            //- no record found
+            //- li.card-items
+                div.card-company-reg
+                    .header-card-comapny
+                        .card-ca-no NO RECORD ( Please Add new company )
+    div.create-company-dialog
+        div.main-dialog
+                .header-dialog
+                    .title-dialog add company
+                    .close-btn-dialog
+                        button#btnclose-dialog
+                .body-dialog.subtext-alert
+                    div.form-label
+                            input(type="text" id="input-companyname" name="company" autocomplete="off" required)
+                            label(for="company" class="company-lbl") 
+                                span.lbl-content Enter Company Name
+                    div.subcontent-txt
+                        label
+                .footer-dialog 
+                    .button-confirm
+                            button.btn#addCompany-btn Save
+
+block scripts
+    script(src='/script/createcompany.js')

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        title GTC-Aldis Cash Advance
+        link(rel="stylesheet", href="/css/Roboto_font/Roboto.css")
+        link(rel="stylesheet", href="/css/goldStyle.css")
+    body
+        //- navigation bar
+        nav.navbar-menu
+            div.container-nav
+                div.nav-logo 
+                    //- img(src="#", alt="logo-gtc")
+                    a.Logo-brand-name(href='/' style="text-decoration: none;color: #4e3939;") GTC Aldis
+                    //-label.Logo-brand-name GTC Aldis
+                div.menubar
+                    div.dropdown-menu
+                        a(  id="drop-downmenu")
+                            img(src="/drawables/Sort Down_100px.png", alt=""  class="menu-btn-logo" height='50px')
+                    div.dropdown-list-control
+                        ul.dropdown-list.add-items
+                            //- li.list-items.add-cash-adv
+                            //-     a(href="#") Add cash Adv
+                            li.list-items.addcompany-list-active
+                                a(href="#" id="addcompany") Add Company
+                            //- li.list-items
+                            //-     a(href="#") Settings
+                            li.list-items
+                                a#logout-btn(class="logout-btn-menu") Logout
+        //- dynamic form
+        div.main-form
+            block content
+
+         
+        script(src="/script/cleave.js/cleave.min.js")
+        script(src="/script/gtc-script.js")
+        block scripts

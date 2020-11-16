@@ -1,0 +1,29 @@
+{
+  "name": "goldtech-ca",
+  "version": "1.0.1",
+  "description": "GOLD TECH, Cash Advance",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.6",
+    "pug": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "author": "Mark Joseph Jornales",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markjornales/gtcaldis_ca.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markjornales/gtcaldis_ca/issues"
+  },
+  "homepage": "https://github.com/markjornales/gtcaldis_ca#readme"
+}

@@ -1,0 +1,105 @@
+extends homepage
+block content
+    .ca-container-f
+        .ca-header-title
+            //- .ca-back-button
+            //-     button.btn.btn-color back
+            .ca-title cash advance form
+        .ca-search-bar 
+                .form-search
+                    input#search_ca(type="text" placeholder="SEARCH CA")
+                    span.icon-search
+                .result-search-engine.hideContent#contentSearchForm
+                    .search-results-items
+                        ul.search-ul-results#dropDown_S
+                           li
+                             a(href="#") 20-0001
+                           li 
+                             a(href="#") 20-0002
+
+        .ca-label-forms-inputs#form_data(data-target=`${unique_id}`)
+            .ca-ca-number
+                label CA No: 
+                    span.ca-number-series#generate_ca
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="carparts" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Car parts
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="freight" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Freight
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="qty-ca" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Quantity
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="desc" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Description
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="plateno" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Plate no
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="Unitprice" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Unit price
+                .ca-car-parts
+                    .form-label
+                        input(type="text" id="totalamount" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content Total Amount
+            .ca-title-label
+                label Cash advance
+                .ca-label-request
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="reqdept" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents")
+                                span.span-content Request by dept
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="name" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents")
+                                span.span-content Name
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="purpose" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents")
+                                span.span-content Purpose
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="ca-amount" name="" autocomplete="off"  required)
+                            label(for="" class="lbl-contents")
+                                span.span-content C.A amount
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="dateneeded" name="" autocomplete="off" required)
+                            label#ca_dneedlbl(for="" class="lbl-contents")
+                                span.span-content Date needed
+                        .subcontent-txt
+                            label Ex. format mm-dd-yyyy
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="dateofca" name="" autocomplete="off" required)
+                            label#ca_dateofcalbl(for="" class="lbl-contents")
+                                span.span-content Date of C.A
+                        .subcontent-txt
+                            label Ex. format mm-dd-yyyy
+        .ca-contents-buttons
+            .btn-control
+                    button.btn.btn-large.btn-color.btn-adjust#caBtn-back back
+            .btn-control
+                button.btn.btn-large#caBtn-SaveUpdate  save
+            .btn-control
+                button.btn.btn-large.btn-color-red#caBtn-cancel cancel
+            //- button save
+block scripts
+    script(src='/script/cashadvance.js')

@@ -1,0 +1,135 @@
+extends homepage
+block content
+    .container-ca-table
+        .ca-title-name-selected#_uniqueid(data-target=`${ca_data.unique_id}`)
+            label #{ca_data.listnames}
+        .ca-datefrom-dateto
+            .ca-datefrom_
+                .ca-cad
+                    .form-label
+                        input(type="text" id="search-ca" name="" autocomplete="off" required)
+                        label(for="" class="lbl-contents")
+                            span.span-content CA NUMBER
+                    //- .subcontent-txt
+                    //-         label Ex. format mm-dd-yyyy
+            //- .ca-dateto_
+            //-     .ca-cad
+            //-         .form-label
+            //-             input(type="text" id="dateto-liqui" name="" autocomplete="off" required)
+            //-             label(for="" class="lbl-contents")
+            //-                 span.span-content DATE TO
+            //-         .subcontent-txt
+            //-                 label Ex. format mm-dd-yyyy
+        .ca-table-body_
+            table.ca-content-tables_#datatable
+                thead
+                    tr
+                        th #
+                        th CA Number
+                        th Date of CA
+                        th Date needed
+                        th Status
+                tbody
+                    //- - const cash_advances = ca_data.cash_advances
+                    //- each itemlist, i in cash_advances
+                    //-     tr(data-target=`${ca_data.unique_id}`)
+                    //-         td= i + 1
+                    //-         td= itemlist.ca_number
+                    //-         td= itemlist.date_of_ca
+                    //-         td= itemlist.date_needed
+                    //-         td= itemlist.ca_status
+
+            .ca-pagenation_#pagination
+                label.page-name#page-label page 
+                    span.count-page 0 - 0
+                    span.totalcount of 0
+                button.previous-ca-tbl#previous-btn
+                button.next-ca-tbl#next-btn
+        .ca-printpreview-pagenation
+            .ca-printpreview_
+                button.btn.btn-wide-printpreview.btn-large.btn-color-red#printpreview print report
+
+    //- liquidation form
+    .liq-background_ 
+        .liq-container-diag
+            .liq-header-diag
+                .liq-title#title_headerinput input liquidation
+                .liq-close-btn 
+                    button#btn-liqui-close
+            .liq-body-diag
+                .liq-ref-no-search
+                    .liq-ref-no
+                        label liquidation ref no :
+                        span.liq-span-refno#liqrefno LIQ-F1
+                    .liq-search
+                        .form-search
+                            input#Searchliq_ref(type="text" placeholder="SEARCH REF #")
+                            span.icon-search
+                        .result-search-engine.result-srch-adjust#liqi_search
+                            .search-results-items
+                                ul.search-ul-results#ul_liqsearch
+                                    li
+                                        a#_liqdrop LIQ-F1
+                .liq-content-items_
+                    .liq-description
+                        .form-label
+                            input(type="text" id="descliquidation" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents" id='liq-des-lbl_')
+                                span.span-content Description
+                    .liq-date
+                        .ca-cad
+                            .form-label
+                                input(type="text" id="dateliquidation-form" name="" autocomplete="off" required)
+                                label(for="" class="lbl-contents" id='liq-date-lbl_')
+                                    span.span-content Date of Liquidation
+                            .subcontent-txt
+                                    label Ex. format mm-dd-yyyy
+                    .liq-amount
+                        .form-label
+                            input(type="text" id="AmountLiquidate" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents" id='liq-amount-lbl')
+                                span.span-content Amount Of Liquidation
+            .liq-footer-diag
+                .liq-btn-save
+                    button.btn#btnliq_form Save
+                .li-btn-delete
+                    button.btn.btn-color-red.remove_btn#btnliq_del delete
+                .li-btn-cancel
+                    button.btn.btn-color-dark-red.remove_btn#btnliq_cancel cancel
+        //- end liquidation form
+    //- .liq-print-preview.active-print-prev
+    .liq-print-preview
+        .liq-print-preview-container
+            .liq-header-print
+                label Print Preview
+                .liq-close-btn 
+                    button#btn-print-close
+            .liq-search-report
+                .ca-dateto_
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="datefrom-liqui" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents")
+                                span.span-content DATE FROM
+                        .subcontent-txt
+                                label Ex. format mm-dd-yyyy
+                .ca-dateto_
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="dateto-liqui" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents")
+                                span.span-content DATE TO
+                        .subcontent-txt
+                                label Ex. format mm-dd-yyyy
+                .ca-dateto_
+                    .ca-cad
+                        .form-label
+                            input(type="text" id="ca-report-no" name="" autocomplete="off" required)
+                            label(for="" class="lbl-contents")
+                                span.span-content CA Number
+            .liq-body-print#printContenet
+            .liq-footer-print
+                button.btn.btn-color-red#printPreview_select Print
+block scripts
+    script(src="/script/pdfobject.min.js")
+    script(src="/script/liquidation.js")
