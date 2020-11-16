@@ -8,6 +8,15 @@ new Cleave('#dateto-liqui',{
     delimiter: '-',
     datePattern: ['m','d','Y']
 });
+new Cleave('#dateliquidation-form',{
+    date: true,
+    delimiter: '-',
+    datePattern: ['m','d','Y']
+});
+new Cleave('#AmountLiquidate',{
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
 class DataTable {
     constructor(prop, data){
         this.tableid = prop.table_id;
@@ -19,7 +28,7 @@ class DataTable {
             pageEnd: this.limitrows,
             pagelimit: this.limitrows
         };
-        this.getuniqueid = document.querySelector('#_uniqueid').attributes[2].value;
+        this.unique_id = document.querySelector('#_uniqueid').attributes[2].value;
         this.showDialog = document.querySelector('.liq-background_');
         this.saveForm_liq = document.querySelector('#btnliq_form');
         this.search_ref = document.querySelector('#Searchliq_ref'); 
@@ -92,10 +101,10 @@ class DataTable {
     tableClick(){
         document.querySelectorAll(`#${this.tableid} tbody tr`).forEach(data=>{
             data.addEventListener('click',(evt)=>{
-                const ca_number = evt.path[1].cells[1].innerText;
-                this.ref_liqRefresh({ca_number: ca_number,unique_id: this.getuniqueid});
+                this.ca_number = evt.path[1].cells[1].innerText;
+                this.ref_liqRefresh({ca_number: this.ca_number,unique_id: this.unique_id});
                 const title_page = document.querySelector('#title_headerinput');
-                title_page.innerHTML = `input liquidation <span id='headerinput_span'>CA#${ca_number}</span>`;
+                title_page.innerHTML = `input liquidation <span id='headerinput_span'>CA#${this.ca_number}</span>`;
                 this.showDialog.classList.add('active-liq');
             })
         });
