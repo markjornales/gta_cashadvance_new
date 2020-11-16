@@ -286,7 +286,7 @@ class DataTable {
             const jsondata = {datefrom: dateFromLiq.value, dateto: dateToLiq.value, unique_id: getuniqueid.attributes[2].value};
             const requestReport = await reqResponse({url:'/liquidate/report',method:'post'},jsondata); 
             const report = await PDFObject.embed(requestReport.url_report,'#printContenet'); 
-        } if(inCAreport.value!==''){
+        }else if(inCAreport.value!==''){
             dateFromLiq.value='',dateToLiq.value='';
             const json_data = { ca_number: inCAreport.value,unique_id: getuniqueid.attributes[2].value };
             const requestReport = await reqResponse({url:'/perca/report',method:'post'},json_data); 
