@@ -23,7 +23,6 @@ function check_login(req, res, next){
     }else{
       res.redirect('/login/cashadvance');
     }
-    //next();
 } 
 function checkIfallReadyLogin(req, res, next){
     if(req.session.username&&req.session.password){ 
@@ -31,7 +30,6 @@ function checkIfallReadyLogin(req, res, next){
     }else{ 
         next();
     }
-  //  next();
 }
 app.get('/login/cashadvance',checkIfallReadyLogin, (req, res)=>{
     res.render('loginform');
@@ -90,7 +88,7 @@ app.post('/login/cashadvance',checkIfallReadyLogin, async(req, res)=>{
         const selectdata = await php_req({url:'http://localhost:8080/php_server/datapass?logingtc', method:'post'}, req.body);
         const username = req.body.username===selectdata.username;
         const password = bcrypt.compareSync(req.body.password, selectdata.password);
-        if(password&&username){
+        if(password && username){
             req.session.username = req.body.username;
             req.session.password = req.body.password;
             res.send({

@@ -52,5 +52,8 @@ class login_button {
     }
 }
 
-
-const login_form = new login_button({username: 'username', password: 'password', button: 'loginbutton'});
+new login_button({
+    username: 'username',
+    password: 'password', 
+    button: 'loginbutton'
+});
