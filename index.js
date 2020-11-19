@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express'); 
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const charValidation = require('./modules/validation');
+const { charValidation, curDate, check_login, checkIfallReadyLogin } = require('./modules/validation');
 const php_req = require('./modules/requestphp');
 const app = express();
 
@@ -17,20 +17,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-function check_login(req, res, next){
-    if(req.session.username&&req.session.password){
-         next();
-    }else{
-      res.redirect('/login/cashadvance');
-    }
-} 
-function checkIfallReadyLogin(req, res, next){
-    if(req.session.username&&req.session.password){ 
-        res.redirect('/');
-    }else{ 
-        next();
-    }
-}
+
 app.get('/login/cashadvance',checkIfallReadyLogin, (req, res)=>{
     res.render('loginform');
 });
@@ -82,26 +69,30 @@ app.post('/logout/cashadvance',check_login,(req, res)=>{
         res.send({
             redirect: '/login/cashadvance'
         });
-})
+}); 
 app.post('/login/cashadvance',checkIfallReadyLogin, async(req, res)=>{
     try { 
         const selectdata = await php_req({url:'http://localhost:8080/php_server/datapass?logingtc', method:'post'}, req.body);
-        const username = req.body.username===selectdata.username;
-        const password = bcrypt.compareSync(req.body.password, selectdata.password);
-        if(password && username){
-            req.session.username = req.body.username;
-            req.session.password = req.body.password;
-            res.send({
-                error: false,
-                message: 'success login',
-                redirect: '/'
-            })
-        }else{
+        const findUser = selectdata.find(user => user.username===req.body.username&&bcrypt.compareSync(req.body.password, user.password));
+        if(findUser) {
+            if(!bcrypt.compareSync(findUser.date_expire, findUser.valid_hash)) return res.send({error: true, message: 'date has been change, please return valid hash data'});
+            if(curDate() < findUser.date_expire){
+                req.session.username = req.body.username;
+                req.session.password = req.body.password;
+                res.send({
+                        error: false,
+                        message: 'Successful Login',
+                        redirect: '/'
+                    });
+            } else{
+                res.send({error: true , message: 'Your account has been expired!'});
+            }
+        } else {
             res.send({
                 error: true,
                 message: 'please check your username and password'
             })
-        } 
+        }
     } catch (error) {
        res.send(error)
     }
