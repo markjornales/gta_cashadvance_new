@@ -94,7 +94,7 @@ app.post('/login/cashadvance',checkIfallReadyLogin, async(req, res)=>{
             })
         }
     } catch (error) {
-       res.send(error)
+       res.status(503).send(error)
     }
 });
 app.post('/cash_advance_/getca', async (req, res)=>{
@@ -105,7 +105,7 @@ app.post('/cash_advance_/getca', async (req, res)=>{
     } catch (error) {
         res.status(400).send(error);
     }
-});
+}); 
 app.post('/ca_form/add',async (req, res)=>{
     try {
         const request_data = await php_req({url: 'http://localhost:8080/php_server/datapass?addform_ca=addca',
